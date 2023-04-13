@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head th:replace="~{base :: head}"></head>
+<body>
+    <div th:replace="base :: logo"></div>
+    <div class="container">
+        <div th:replace="~{base :: titulo('Novo pedido')}"></div>
+        
+        <div class="card mt-1">
+            <form th:object="${requisicaoNovoPedido}" class="card-body" th:action="@{/pedido/novo}" method="POST">
+                <div class="form-group">
+                    <label for="nomeProduto">Nome produto</label>
+                    <input th:field="*{nomeProduto}" class="form-control" th:errorclass="is-invalid" placeholder="Nome do produto"/>
+                    <small>Informa qual o nome do produto</small>
+                </div>
+                <div class="form-group">
+                    <label for="urlProduto">url produto</label>
+                    <input th:field="*{urlProduto}" class="form-control" th:errorclass="is-invalid" placeholder="Url do produto"/>
+                </div>
+                <div class="form-group">
+                    <label for="urlImagem">Url imagem</label>
+                    <input th:field="*{urlImagem}" class="form-control" th:errorclass="is-invalid" placeholder="Url do imagem"/>
+                    <small>Informa qual o url do imagem</small>
+                </div>
+                <div class="form-group">
+                    <label for="descricao">Descricao</label>
+                    <textarea th:field="*{descricao}" class="form-control" th:errorclass="is-invalid" placeholder="Descticao"></textarea>
+                </div>
+                <button class="btn btn-dark mt-3" type="submit">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
